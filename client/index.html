@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <title>Products</title>
+
+    <link rel="stylesheet" href="style.css" />
+  </head>
+  <body>
+    <div class="container">
+      <h1>Product Stock Management</h1>
+
+      <div class="form-container">
+        <h2>Add New Product</h2>
+
+        <form action="" id="productForm">
+          <input
+            type="text"
+            id="categoryProduct"
+            placeholder="Category Product"
+            required
+          />
+          <input
+            type="text"
+            id="productName"
+            placeholder="Product Name"
+            required
+          />
+          <input type="number" id="price" placeholder="Price" required />
+          <input
+            type="number"
+            id="productStock"
+            placeholder="Stock Quantity"
+            required
+          />
+          <button type="submit">Add Product</button>
+        </form>
+      </div>
+
+      <h2>Product List</h2>
+      <table>
+        <thead>
+          <!-- Ini baris -->
+
+          <th>No.</th>
+
+          <!-- Ini Kolom 1 -->
+          <th>Category of Product</th>
+
+          <!-- Ini Kolom 2 -->
+          <th>Product Name</th>
+
+          <!-- Ini Kolom 3 -->
+          <th>Price</th>
+
+          <!-- Ini Kolom 4 -->
+          <th>Stock Quantity</th>
+
+          <th>Action</th>
+        </thead>
+
+        <!-- Camel Case  : product table  = ProductTable / productTable -->
+        <!-- Snake Case : product table  = product_table  -->
+        <!-- Kebab Case : product table  = product-table  -->
+        <!-- All Caps : product table  = PRODUCT_TABLE -->
+        <tbody id="productTable"></tbody>
+      </table>
+    </div>
+    <script src="index.js"></script>
+  </body>
+</html>
