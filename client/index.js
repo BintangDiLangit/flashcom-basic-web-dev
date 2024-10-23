@@ -1,6 +1,7 @@
 let productList = [];
+const apiUrl = 'http://localhost:5001/api/products'
 
-
+// Array Data 
 function renderProducts() {
     const productTable = document.getElementById('productTable');
 
@@ -24,6 +25,33 @@ function renderProducts() {
 
         productTable.appendChild(row)
     })
+}
+
+// API / Get Data Dari Backend (Database)
+function fetchProducts() {
+    fetch(apiUrl)
+        .then(response => response.json())
+        .then(data => {
+            const productTableBody = document.getElementById('productTable');
+            productTableBody.innerHTML = '';
+
+            data.forEach((product, index) => {
+                const row = document.createElement('tr');
+
+                row.innerHTML = `
+                    <td>${index + 1}</td>
+                    <td>${product.category_name}</td>
+                    <td>${product.product_name}</td>
+                    <td>${product.price}</td>
+                    <td>${product.stock}</td>
+                    <td>
+                        <button onclick="deleteProduct(${product.id})">Delete</button>
+                    </td>
+                `;
+
+                productTableBody.appendChild(row)
+            })
+        })
 }
 
 function addProduct(event) {
@@ -52,5 +80,7 @@ function deleteProduct(index) {
     productList.splice(index, 1);
     renderProducts();
 }
+
+fetchProducts();
 
 document.getElementById('productForm').addEventListener('submit', addProduct);
